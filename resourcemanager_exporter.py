@@ -122,7 +122,7 @@ class ResourceManagerCollector(object):
 class ResourceManagerNodeCollector(object):
     # The build statuses we want to export about.
     statuses = {
-        "state": "State of the node - valid values are: NEW, RUNNING, UNHEALTHY, DECOMMISSIONED, LOST, REBOOTED",
+        "state": "State of the node - valid values are: NEW, RUNNING, UNHEALTHY, DECOMMISSIONED, LOST, REBOOTED, DECOMMISIONING, SHUTDOWN",
         "numContainers": "The total number of containers currently running on the node",
         "usedMemoryMB": "The total amount of memory currently used on the node (in MB)",
         "availMemoryMB": "The total amount of memory currently available on the node (in MB)",
