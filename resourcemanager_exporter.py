@@ -37,9 +37,11 @@ class ResourceManagerCollector(object):
         "totalNodes": "The total number of nodes",
         "lostNodes": "The number of lost nodes",
         "unhealthyNodes": "The number of unhealthy nodes",
+        "decommissioningNodes": "The number of nodes decommissioning",
         "decommissionedNodes": "The number of nodes decommissioned",
         "rebootedNodes": "The number of nodes rebooted",
-        "activeNodes": "The number of active nodes"
+        "activeNodes": "The number of active nodes",
+        "shutdownNodes": "The number of shutdown nodes"
     }
 
     def __init__(self, target, cluster):
@@ -135,6 +137,8 @@ class ResourceManagerNodeCollector(object):
         'DECOMMISSIONED': 4, 
         'LOST': 5, 
         'REBOOTED': 6,
+        'DECOMMISIONING':7,
+        'SHUTDOWN':8,
     }
 
     def __init__(self, target, cluster):
