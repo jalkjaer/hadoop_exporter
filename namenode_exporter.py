@@ -112,11 +112,11 @@ class NameNodeCollector(object):
         for bean in beans:
             if bean['name'] == "Hadoop:service=NameNode,name=FSNamesystemState":
                 for status in self.statuses:
-                    if bean.has_key(status):
+                    if status in bean:
                         self._prometheus_metrics[status].add_metric([self._cluster], bean[status])
             if bean['name'] == "Hadoop:service=NameNode,name=FSNamesystem":
                 for status in self.statuses:
-                    if bean.has_key(status):
+                    if status in bean:
                         self._prometheus_metrics[status].add_metric([self._cluster], bean[status])
             elif bean['name'] == "Hadoop:service=NameNode,name=NameNodeInfo":
                 liveNodes = json.loads(bean['LiveNodes'])
@@ -131,7 +131,7 @@ class NameNodeCollector(object):
                     node = deadNodes[host]
                     node['up'] = 0
                     for status in self.datanode_statuses:
-                        if node.has_key(status):
+                        if status in node:
                             self._prometheus_datanode_metrics[status].add_metric(
                                 [self._cluster, host, node['xferaddr'] ], node[status])
 
@@ -183,7 +183,7 @@ def main():
         # REGISTRY.register(ResourceManagerNodeCollector(args.url, args.cluster))
         
         start_http_server(port)
-        print "Polling %s. Serving at port: %s" % (args.url, port)
+        print("Polling %s. Serving at port: %s" % (args.url, port))
         while True:
             time.sleep(1)
     except KeyboardInterrupt:
