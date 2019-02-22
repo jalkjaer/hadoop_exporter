@@ -42,4 +42,4 @@ optional arguments:
   --cluster cluster     label for cluster
 ```
 
-Tested on Apache Hadoop 2.5.2
+Tested on Apache Hadoop 2.8.5 (AWS EMR 5.21.0)
